@@ -49,8 +49,7 @@ public:
                     visited[parent_map[current]] = true;
                 }
             }
-
-            // If at least one new node was infected, increment time
+             // If at least one new node was infected, increment time
             if (fl) {
                 maxi++;
             }
