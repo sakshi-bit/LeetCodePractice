@@ -7,6 +7,24 @@
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+
+ Time Complexity
+
+Each node is processed exactly once.
+
+Work per node = O(1).
+
+Total = O(N)
+
+Space Complexity
+
+No extra data structures used.
+
+Only recursion stack = O(H), where H is the height of the tree.
+
+Worst case (skewed BST): O(N)
+
+Average case (balanced BST): O(log N)
  * };
  */
 class Solution {
