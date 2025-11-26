@@ -12,6 +12,7 @@ int main()
 	cin >> n >> m;
 	//graph here
 	//int adj[n + 1][m + 1];
+	//O(2E)
 	vector<vector<int>>adj(n + 1, vector<int>(n + 1, 0));
 	for (int i = 0; i < m; i++) {
 		int u, v;
