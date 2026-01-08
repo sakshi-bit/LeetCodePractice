@@ -1,7 +1,11 @@
 class Solution {
 public:
-    // DFS function to mark all nodes in the same connected component
-    void dfs(int node, vector<int>& vis, vector<vector<int>> adjList) {
+    /*
+        DFS function
+        Time Complexity: O(N + E)
+        Space Complexity: O(N)  -> recursion stack in worst case
+    */
+    void dfs(int node, vector<int>& vis, vector<vector<int>>& adjList) {
         // Mark current node as visited
         vis[node] = 1;
 
@@ -13,6 +17,19 @@ public:
         }
     }
 
+    /*
+        Main function
+        Time Complexity:
+            - Building adjacency list: O(N^2)
+            - DFS traversal: O(N + E)
+            - Overall: O(N^2)
+
+        Space Complexity:
+            - Adjacency list: O(N^2) (worst case, fully connected graph)
+            - Visited array: O(N)
+            - Recursion stack: O(N)
+            - Overall: O(N^2)
+    */
     int findCircleNum(vector<vector<int>>& isConnected) {
         int n = isConnected.size();
 
@@ -20,6 +37,7 @@ public:
         vector<vector<int>> adjList(n);
 
         // Convert adjacency matrix to adjacency list
+        // Time Complexity: O(N^2)
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (isConnected[i][j] == 1 && i != j) {
@@ -29,16 +47,16 @@ public:
             }
         }
 
-        // Visited array to keep track of visited cities
+        // Visited array
         vector<int> vis(n, 0);
 
         int cnt = 0; // Number of provinces
 
-        // Traverse all nodes
+        // DFS on each unvisited node
+        // Time Complexity: O(N + E)
         for (int i = 0; i < n; i++) {
             if (!vis[i]) {
-                // Found a new province
-                cnt++;
+                cnt++;               // New connected component found
                 dfs(i, vis, adjList);
             }
         }
